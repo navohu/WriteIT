@@ -52,18 +52,14 @@ package WriteIT;
      {
      // Create the GUI
      super("Naive Similarity Finder");
-     Container cp = getContentPane();
-     cp.setLayout(new BorderLayout());
-     // Put the reference, scaled, in the left part of the UI.
+//     // Put the reference, scaled, in the left part of the UI.
      RenderedImage ref = rescale(ImageIO.read(reference));
-     cp.add(new DisplayJAI(ref), BorderLayout.WEST);
      // Calculate the signature vector for the reference.
      signature = calcSignature(ref);
      // Now we need a component to store X images in a stack, where X is the
      // number of images in the same directory as the original one.
      File[] others = getOtherImageFiles(reference);
      JPanel otherPanel = new JPanel(new GridLayout(others.length, 2));
-     cp.add(new JScrollPane(otherPanel), BorderLayout.CENTER);
      // For each image, calculate its signature and its distance from the
      // reference signature.
      RenderedImage[] rothers = new RenderedImage[others.length];
@@ -93,25 +89,14 @@ package WriteIT;
      // Add them to the UI.
      for (int o = 0; o < others.length; o++)
        {
-       otherPanel.add(new DisplayJAI(rothers[o]));
-       JLabel ldist = new JLabel("<html>" + others[o].getName() + "<br>"
-           + String.format("% 13.3f", distances[o]) + "</html>");
-       ldist.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 36));
-       System.out.printf("<td class=\"simpletable legend\"> "+
-           "<img src=\"MiscResources/ImageSimilarity/icons/miniicon_%s\" "+
-           "alt=\"Similarity result\"><br>% 13.3f</td>\n", others[o].getName(),distances[o]);
-       otherPanel.add(ldist);
+       System.out.printf("%s"+ "% 13.3f\n", others[o].getName(),distances[o]);
        }
-     // More GUI details.
-     pack();
-     setVisible(true);
-     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
      }
   
   /*
-111   * This method rescales an image to 300,300 pixels using the JAI scale
-112   * operator.
-113   */
+   * This method rescales an image to 300,300 pixels using the JAI scale
+   * operator.
+   */
    private RenderedImage rescale(RenderedImage i)
      {
      float scaleW = ((float) baseSize) / i.getWidth();
@@ -129,8 +114,8 @@ package WriteIT;
      }
    
   /*
-131   * This method calculates and returns signature vectors for the input image.
-132   */
+   * This method calculates and returns signature vectors for the input image.
+   */
    private Color[][] calcSignature(RenderedImage i)
      {
      // Get memory for the signature.
@@ -146,10 +131,10 @@ package WriteIT;
      }
   
   /*
-148   * This method averages the pixel values around a central point and return the
-149   * average as an instance of Color. The point coordinates are proportional to
-150   * the image.
-151   */
+   * This method averages the pixel values around a central point and return the
+   * average as an instance of Color. The point coordinates are proportional to
+   * the image.
+   */
    private Color averageAround(RenderedImage i, double px, double py)
      {
      // Get an iterator for the image.
@@ -180,10 +165,10 @@ package WriteIT;
      }
   
   /*
-182   * This method calculates the distance between the signatures of an image and
-183   * the reference one. The signatures for the image passed as the parameter are
-184   * calculated inside the method.
-185   */
+   * This method calculates the distance between the signatures of an image and
+   * the reference one. The signatures for the image passed as the parameter are
+   * calculated inside the method.
+   */
    private double calcDistance(RenderedImage other)
      {
      // Calculate the signature for that image.
@@ -209,39 +194,26 @@ package WriteIT;
      }
   
   /*
-211   * This method get all image files in the same directory as the reference.
-212   * Just for kicks include also the reference image.
-213   */
+   * This method get all image files in the same directory as the reference.
+   * Just for kicks include also the reference image.
+   */
    private File[] getOtherImageFiles(File reference)
      {
      File dir = new File(reference.getParent());
      // List all the image files in that directory.
      File[] others = dir.listFiles(new JPEGImageFileFilter());
      return others;
-     }
+     } //CHANGE THIS TO GET INFORMATION FROM THE DATABASE
   
   /*
-223   * The entry point for the application, which opens a file with an image that
-224   * will be used as reference and starts the application.
-225   */
+   * The entry point for the application, which opens a file with an image that
+   * will be used as reference and starts the application.
+   */
    public static void main(String[] args) throws IOException
      {
-     JFileChooser fc = new JFileChooser(basePath);
-     fc.setFileFilter(new JPEGImageFileFilter());
-     int res = fc.showOpenDialog(null);
-     // We have an image!
-     if (res == JFileChooser.APPROVE_OPTION)
-       {
-       File file = fc.getSelectedFile();
-       new NaiveSimilarityFinder(file);
-       }
-     // Oops!
-     else
-       {
-       JOptionPane.showMessageDialog(null,
-           "You must select one image to be the reference.", "Aborting...",
-           JOptionPane.WARNING_MESSAGE);
-       }
+    	 File img = new File("//Users//nathalievonhuth//Desktop//BT1.jpg");
+    	 new NaiveSimilarityFinder(img);
+
      }
    
    }

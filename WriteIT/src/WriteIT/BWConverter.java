@@ -1,3 +1,5 @@
+package WriteIT;
+
 import java.awt.Color;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
@@ -174,10 +176,11 @@ public class BWConverter {
 	    // how many rotations we want
 	    makeRotations(centered, 10);
 	}
-	
+
 	public static void main(String[] args) throws IOException {
 		File img = new File("//home//marko//workspace//HackLondon//src//1.jpg");
 		BufferedImage in = ImageIO.read(img);
 		writeBWImages(in);
 	}
+
 }
