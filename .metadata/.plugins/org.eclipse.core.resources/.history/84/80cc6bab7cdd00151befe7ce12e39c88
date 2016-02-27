@@ -36,7 +36,7 @@ public class RotateImage extends JPanel{
 	 }
 
 	 public void paintComponent(Graphics g){
-	      Graphics2D g2d= bImage.createGraphics(); // Create a Java2D version of g.
+	      Graphics2D g2d=(Graphics2D)g; // Create a Java2D version of g.
 	      g2d.translate(170, 0); // Translate the center of our coordinates.
 	      g2d.rotate(1);  // Rotate the image by 1 radian.
 	      g2d.drawImage(image, 0, 0, 200, 200, this);
@@ -66,7 +66,6 @@ public class RotateImage extends JPanel{
 	    RotateImage panel = new RotateImage();
 	    frame.setContentPane(panel);  
 	    frame.setVisible(true);  
-	    panel.saveImageActionPerformed();
 	 }
 }
 //import java.awt.Graphics;

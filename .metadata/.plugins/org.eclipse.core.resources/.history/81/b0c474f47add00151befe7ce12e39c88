@@ -2,13 +2,10 @@ package WriteIT;
 
 //Import the basic graphics classes.
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 /**
 * Simple program that loads, rotates and displays an image.
 * Uses the file Duke_Blocks.gif, which should be in
@@ -19,14 +16,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 */
 
 public class RotateImage extends JPanel{
-	// Declare an Image object for us to use.
-	Image image;
-	private static final int BI_WIDTH = 600;
-	private static final int BI_HEIGHT = BI_WIDTH;
-	
-	//Declare an BufferedImage for saving in jpeg
-	private BufferedImage bImage = new BufferedImage(BI_WIDTH, BI_HEIGHT,
-	            BufferedImage.TYPE_INT_RGB);
+
+	 // Declare an Image object for us to use.
+	 Image image;
 	 
 	 // Create a constructor method
 	 public RotateImage(){
@@ -36,27 +28,12 @@ public class RotateImage extends JPanel{
 	 }
 
 	 public void paintComponent(Graphics g){
-	      Graphics2D g2d= bImage.createGraphics(); // Create a Java2D version of g.
+	      Graphics2D g2d=(Graphics2D)g; // Create a Java2D version of g.
 	      g2d.translate(170, 0); // Translate the center of our coordinates.
 	      g2d.rotate(1);  // Rotate the image by 1 radian.
 	      g2d.drawImage(image, 0, 0, 200, 200, this);
+	      ImageIO.write(g2d, "jpg", new File("//Users//nathalievonhuth//Desktop//BT3BW.jpg"));
 	 }
-	 
-	 private void saveImageActionPerformed() {
-	      JFileChooser filechooser = new JFileChooser();
-	      FileNameExtensionFilter filter = new FileNameExtensionFilter(
-	               "JPG Images", "jpg");
-	      filechooser.setFileFilter(filter);
-	      int result = filechooser.showSaveDialog(this);
-	      if (result == JFileChooser.APPROVE_OPTION) {
-	         File saveFile = filechooser.getSelectedFile();
-	         try {
-	            ImageIO.write(bImage, "jpg", saveFile);
-	         } catch (IOException e) {
-	            e.printStackTrace();
-	         }
-	      }
-	   }
 
 	 public static void main(String arg[]){
 	    JFrame frame = new JFrame("RotateImage");
@@ -66,7 +43,6 @@ public class RotateImage extends JPanel{
 	    RotateImage panel = new RotateImage();
 	    frame.setContentPane(panel);  
 	    frame.setVisible(true);  
-	    panel.saveImageActionPerformed();
 	 }
 }
 //import java.awt.Graphics;
