@@ -1,0 +1,18 @@
+package WriteIT;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+import java.awt.image.BufferedImage;
+
+public class RotateImage {
+	
+	public void rotate(BufferedImage in, double degrees, int x, int y){
+		Graphics g = null;
+		Graphics2D g2d = (Graphics2D) g;
+		AffineTransform tx = AffineTransform.getRotateInstance(degrees);
+		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
+		g2d.drawImage(op.filter(in, null), x, y, null);
+
+	}
+}

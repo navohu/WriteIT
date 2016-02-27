@@ -46,9 +46,9 @@ public class BWConverter {
 	    ImageIO.write(bw, "jpg", new File("//Users//nathalievonhuth//Desktop//BT3BW.jpg"));
 	}
 	
-//	public static void main(String[] args) throws IOException {
-//		File img = new File("//Users//nathalievonhuth//Desktop//BT3.jpg");
-//		BufferedImage in = ImageIO.read(img);
-//		writeBWImage(in);
-//	}
+	public static void main(String[] args) throws IOException {
+		File img = new File("//Users//nathalievonhuth//Desktop//BT3.jpg");
+		BufferedImage in = ImageIO.read(img);
+		writeBWImage(in);
+	}
 }

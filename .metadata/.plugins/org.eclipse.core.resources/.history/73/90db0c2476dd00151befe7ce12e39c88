@@ -1,0 +1,26 @@
+package WriteIT;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+public class RotateImage {
+	
+	public void rotate(Graphics g, BufferedImage in, double degrees, int x, int y){
+		Graphics2D g2d = (Graphics2D) g;
+		AffineTransform tx = AffineTransform.getRotateInstance(degrees);
+		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
+		g2d.drawImage(op.filter(in, null), x, y, null);
+	}
+	
+	public static void main(String[] args) throws IOException {
+		File img = new File("//Users//nathalievonhuth//Desktop//BT3.jpg");
+		BufferedImage in = ImageIO.read(img);
+		rotate(g, in, 45, 0, 0);
+	}
+}

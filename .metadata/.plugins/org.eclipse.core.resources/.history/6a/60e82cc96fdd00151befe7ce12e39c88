@@ -1,0 +1,11 @@
+package WriteIT;
+import java.awt.Graphics;
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
+
+public class RotateImage {
+	
+	public void rotate(BufferedImage in, double degrees){
+		AffineTransform image = AffineTransform.getRotateInstance(degrees);
+	}
+}
