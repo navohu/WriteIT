@@ -77,8 +77,7 @@ import javax.swing.JFrame;
            others[p2] = tempF;
            }
          }
-     
-     // Print the name of file and all values
+     // Add them to the UI.
      for (int o = 0; o < others.length; o++)
        {
        System.out.printf("%s"+ "% 13.3f\n", others[o].getName(),distances[o]);

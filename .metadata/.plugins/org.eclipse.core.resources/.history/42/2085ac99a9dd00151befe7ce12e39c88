@@ -89,21 +89,21 @@ import javax.swing.JFrame;
    * This method rescales an image to 300,300 pixels using the JAI scale
    * operator.
    */
-   private RenderedImage rescale(RenderedImage i)
-     {
-     float scaleW = ((float) baseSize) / i.getWidth();
-     float scaleH = ((float) baseSize) / i.getHeight();
-     // Scales the original image
-     ParameterBlock pb = new ParameterBlock();
-     pb.addSource(i);
-     pb.add(scaleW);
-     pb.add(scaleH);
-     pb.add(0.0F);
-     pb.add(0.0F);
-     pb.add(new InterpolationNearest());
-     // Creates a new, scaled image and uses it on the DisplayJAI component
-     return JAI.create("scale", pb);
-     }
+//   private RenderedImage rescale(RenderedImage i)
+//     {
+//     float scaleW = ((float) baseSize) / i.getWidth();
+//     float scaleH = ((float) baseSize) / i.getHeight();
+//     // Scales the original image
+//     ParameterBlock pb = new ParameterBlock();
+//     pb.addSource(i);
+//     pb.add(scaleW);
+//     pb.add(scaleH);
+//     pb.add(0.0F);
+//     pb.add(0.0F);
+//     pb.add(new InterpolationNearest());
+//     // Creates a new, scaled image and uses it on the DisplayJAI component
+//     return JAI.create("scale", pb);
+//     }
    
   /*
    * This method calculates and returns signature vectors for the input image.

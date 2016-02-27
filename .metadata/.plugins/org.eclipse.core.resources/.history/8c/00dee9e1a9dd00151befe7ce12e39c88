@@ -89,7 +89,7 @@ import javax.swing.JFrame;
    * This method rescales an image to 300,300 pixels using the JAI scale
    * operator.
    */
-   private RenderedImage rescale(RenderedImage i)
+   private void rescale(RenderedImage i)
      {
      float scaleW = ((float) baseSize) / i.getWidth();
      float scaleH = ((float) baseSize) / i.getHeight();
@@ -102,7 +102,7 @@ import javax.swing.JFrame;
      pb.add(0.0F);
      pb.add(new InterpolationNearest());
      // Creates a new, scaled image and uses it on the DisplayJAI component
-     return JAI.create("scale", pb);
+//     return JAI.create("scale", pb);
      }
    
   /*
