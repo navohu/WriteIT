@@ -8,23 +8,28 @@ package WriteIT;
 6  */
   
  import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.image.RenderedImage;
-import java.awt.image.renderable.ParameterBlock;
-import java.io.File;
-import java.io.IOException;
+ import java.awt.Color;
+ import java.awt.Container;
+ import java.awt.Font;
+ import java.awt.GridLayout;
+ import java.awt.image.RenderedImage;
+ import java.awt.image.renderable.ParameterBlock;
+ import java.io.File;
+ import java.io.IOException;
   
-
  import javax.imageio.ImageIO;
-import javax.media.jai.InterpolationNearest; 
-import javax.media.jai.JAI;
-import javax.media.jai.iterator.RandomIterFactory;
-import javax.media.jai.iterator.RandomIter;
-import javax.swing.JFrame;
-
+ import javax.media.jai.InterpolationNearest; 
+ import javax.media.jai.JAI;
+ import javax.media.jai.iterator.RandomIterFactory;
+ import javax.media.jai.iterator.RandomIter;
+ import javax.swing.JFileChooser;
+ import javax.swing.JFrame;
+ import javax.swing.JLabel;
+ import javax.swing.JOptionPane;
+ import javax.swing.JPanel;
+ import javax.swing.JScrollPane;
+  
+ import com.sun.media.jai.widget.DisplayJAI;
  /**
 33  * This class uses a very simple, naive similarity algorithm to compare an image
 34  * with all others in the same directory.
@@ -36,6 +41,9 @@ import javax.swing.JFrame;
    private Color[][] signature;
    // The base size of the images.
    private static final int baseSize = 300;
+   // Where are all the files?
+   private static final String basePath = 
+     "/home/rafael/Pesquisa/ImageSimilarity";
    
   /*
 48   * The constructor, which creates the GUI and start the image processing task.
@@ -51,6 +59,7 @@ import javax.swing.JFrame;
      // Now we need a component to store X images in a stack, where X is the
      // number of images in the same directory as the original one.
      File[] others = getOtherImageFiles(reference);
+     JPanel otherPanel = new JPanel(new GridLayout(others.length, 2));
      // For each image, calculate its signature and its distance from the
      // reference signature.
      RenderedImage[] rothers = new RenderedImage[others.length];
@@ -77,8 +86,7 @@ import javax.swing.JFrame;
            others[p2] = tempF;
            }
          }
-     
-     // Print the name of file and all values
+     // Add them to the UI.
      for (int o = 0; o < others.length; o++)
        {
        System.out.printf("%s"+ "% 13.3f\n", others[o].getName(),distances[o]);
@@ -205,6 +213,7 @@ import javax.swing.JFrame;
      {
     	 File img = new File("//Users//nathalievonhuth//Desktop//BT1.jpg");
     	 new NaiveSimilarityFinder(img);
+
      }
    
    }

@@ -51,6 +51,7 @@ import javax.swing.JFrame;
      // Now we need a component to store X images in a stack, where X is the
      // number of images in the same directory as the original one.
      File[] others = getOtherImageFiles(reference);
+     JPanel otherPanel = new JPanel(new GridLayout(others.length, 2));
      // For each image, calculate its signature and its distance from the
      // reference signature.
      RenderedImage[] rothers = new RenderedImage[others.length];
@@ -77,8 +78,7 @@ import javax.swing.JFrame;
            others[p2] = tempF;
            }
          }
-     
-     // Print the name of file and all values
+     // Add them to the UI.
      for (int o = 0; o < others.length; o++)
        {
        System.out.printf("%s"+ "% 13.3f\n", others[o].getName(),distances[o]);

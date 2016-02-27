@@ -102,7 +102,7 @@ import javax.swing.JFrame;
      pb.add(0.0F);
      pb.add(new InterpolationNearest());
      // Creates a new, scaled image and uses it on the DisplayJAI component
-     return JAI.create("scale", pb);
+//     return JAI.create("scale", pb);
      }
    
   /*
