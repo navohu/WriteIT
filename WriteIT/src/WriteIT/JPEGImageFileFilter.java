@@ -1,5 +1,3 @@
-package WriteIT;
-
 /*
 2  * Part of the Java Image Processing Cookbook, please see
 3  * http://www.lac.inpe.br/~rafael.santos/JIPCookbook.jsp

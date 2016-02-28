@@ -1,28 +1,14 @@
-package WriteIT;
-
-/*
-2  * Part of the Java Image Processing Cookbook, please see
-3  * http://www.lac.inpe.br/~rafael.santos/JIPCookbook.jsp
-4  * for information on usage and distribution.
-5  * Rafael Santos (rafael.santos@lac.inpe.br)
-6  */
-  
- import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
-import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.image.RenderedImage;
 import java.awt.image.renderable.ParameterBlock;
 import java.io.File;
 import java.io.IOException;
-  
 
- import javax.imageio.ImageIO;
-import javax.media.jai.InterpolationNearest; 
+import javax.imageio.ImageIO;
+import javax.media.jai.InterpolationNearest;
 import javax.media.jai.JAI;
-import javax.media.jai.iterator.RandomIterFactory;
 import javax.media.jai.iterator.RandomIter;
+import javax.media.jai.iterator.RandomIterFactory;
 import javax.swing.JFrame;
 
  /**
@@ -34,6 +20,8 @@ import javax.swing.JFrame;
    // The reference image "signature" (25 representative pixels, each in R,G,B).
    // We use instances of Color to make things simpler.
    private Color[][] signature;
+   String closestImage = "";
+   double closestDistance = -1;
    // The base size of the images.
    private static final int baseSize = 300;
    
@@ -60,31 +48,17 @@ import javax.swing.JFrame;
        rothers[o] = rescale(ImageIO.read(others[o]));
        distances[o] = calcDistance(rothers[o]);
        }
-     // Sort those vectors *together*.
-     for (int p1 = 0; p1 < others.length - 1; p1++)
-       for (int p2 = p1 + 1; p2 < others.length; p2++)
-         {
-         if (distances[p1] > distances[p2])
-           {
-           double tempDist = distances[p1];
-           distances[p1] = distances[p2];
-           distances[p2] = tempDist;
-           RenderedImage tempR = rothers[p1];
-           rothers[p1] = rothers[p2];
-           rothers[p2] = tempR;
-           File tempF = others[p1];
-           others[p1] = others[p2];
-           others[p2] = tempF;
-           }
-         }
+    
+     int best = 0;
+     // find minimum distance
+     for (int p = 0; p < others.length - 1; p++) {
+    	if (distances[p] < distances[best]) best = p; 
+     }
      
      // Print the name of file and all values
-     for (int o = 0; o < others.length; o++)
-       {
-       System.out.printf("%s"+ "% 13.3f\n", others[o].getName(),distances[o]);
-       }
+      this.closestImage = others[best].getName();
+      this.closestDistance = distances[best];
      }
-  
   /*
    * This method rescales an image to 300,300 pixels using the JAI scale
    * operator.
@@ -189,13 +163,11 @@ import javax.swing.JFrame;
    * This method get all image files in the same directory as the reference.
    * Just for kicks include also the reference image.
    */
-   private File[] getOtherImageFiles(File reference)
-     {
-     File dir = new File(reference.getParent());
-     // List all the image files in that directory.
-     File[] others = dir.listFiles(new JPEGImageFileFilter());
-     return others;
-     } //CHANGE THIS TO GET INFORMATION FROM THE DATABASE
+   private File[] getOtherImageFiles(File reference) {
+	   File dir = new File("//home//marko//workspace//HackLondon//src//rotatedScans");
+	   File[] others = dir.listFiles(new JPEGImageFileFilter());
+	   return others;
+     } 
   
   /*
    * The entry point for the application, which opens a file with an image that
@@ -203,8 +175,10 @@ import javax.swing.JFrame;
    */
    public static void main(String[] args) throws IOException
      {
-    	 File img = new File("//Users//nathalievonhuth//Desktop//BT1.jpg");
-    	 new NaiveSimilarityFinder(img);
+    	 /* 
+    	 File img = new File("//home//marko//workspace//HackLondon//src//database//sample3.jpg");
+    	 new NaiveSimilarityFinder(img); 
+    	 */
      }
    
    }

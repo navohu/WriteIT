@@ -1,5 +1,3 @@
-package WriteIT;
-
 //Import the basic graphics classes.
 import java.awt.*;
 import java.awt.image.BufferedImage;

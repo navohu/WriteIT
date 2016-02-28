@@ -74,7 +74,7 @@ public class BWConverter {
 	    	}
 	    }
 	    
-	    ImageIO.write(cropped, "bmp", new File("//home//marko//workspace//HackLondon//src//bw" + count + ".bmp"));
+	    ImageIO.write(cropped, "jpg", new File("//home//marko//workspace//HackLondon//src//rotatedScans//bw" + count + ".jpg"));
 	}
 	
 	public static void makeRotations(BufferedImage img, int n) throws IOException {
@@ -172,14 +172,14 @@ public class BWConverter {
 	    }
 	    
 	    // how many rotations we want
-	    makeRotations(centered, 360);
+	    makeRotations(centered, 344);
 	}
 	
 	public static void main(String[] args) throws IOException {
-		long time = System.currentTimeMillis();
+		/*
 		File img = new File("//home//marko//workspace//HackLondon//src//1.bmp");
 		BufferedImage in = ImageIO.read(img);
 		writeBWImages(in);
-		System.out.println("Time is: " + (System.currentTimeMillis() - time));
+		*/
 	}
 }
