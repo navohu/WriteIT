@@ -1,11 +1,29 @@
+<<<<<<< Updated upstream
 import java.awt.Color;
+=======
+package WriteIT;
+
+/*
+2  * Part of the Java Image Processing Cookbook, please see
+3  * http://www.lac.inpe.br/~rafael.santos/JIPCookbook.jsp
+4  * for information on usage and distribution.
+5  * Rafael Santos (rafael.santos@lac.inpe.br)
+6  */
+  
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+>>>>>>> Stashed changes
 import java.awt.image.RenderedImage;
 import java.awt.image.renderable.ParameterBlock;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+<<<<<<< Updated upstream
 import javax.media.jai.InterpolationNearest;
+=======
+import javax.media.jai.InterpolationNearest; 
+>>>>>>> Stashed changes
 import javax.media.jai.JAI;
 import javax.media.jai.iterator.RandomIter;
 import javax.media.jai.iterator.RandomIterFactory;
@@ -175,10 +193,21 @@ import javax.swing.JFrame;
    */
    public static void main(String[] args) throws IOException
      {
+<<<<<<< Updated upstream
     	 /* 
     	 File img = new File("//home//marko//workspace//HackLondon//src//database//sample3.jpg");
     	 new NaiveSimilarityFinder(img); 
     	 */
+=======
+    	 File img = new File("//Users//nathalievonhuth//Desktop//BT1.jpg");
+    	 BufferedImage in = ImageIO.read(img);
+ 		 BWConverter.writeBWImages(in, 1);
+ 		 
+ 		File img2 = new File("//Users//nathalievonhuth//Desktop//1.jpg");
+ 		BufferedImage in2 = ImageIO.read(img2);
+		 BWConverter.writeBWImages(in2, 360);
+    	 new NaiveSimilarityFinder(img2);
+>>>>>>> Stashed changes
      }
    
    }

@@ -1,0 +1,14 @@
+QRwritten code...hacklondon 2016
+
+27/02/2016
+
+start off creating imaging application which can send a pic from android to server
+
+new post using urlconnection:
+
+http://stackoverflow.com/questions/2938502/sending-post-data-in-android
+
+HASHMAPS USE POST!
+
+
+http://stackoverflow.com/questions/5707905/problem-executing-jar-in-php

@@ -1,0 +1,31 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/camera_preview"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1" >
+
+
+
+
+    <ImageView
+        android:id="@+id/lastPic1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="bottom|left"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_weight="1" />
+
+
+
+    <RelativeLayout
+        android:id="@+id/rellay"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+
+    </RelativeLayout>
+
+
+</FrameLayout>

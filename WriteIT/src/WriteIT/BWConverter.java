@@ -74,7 +74,15 @@ public class BWConverter {
 	    	}
 	    }
 	    
+<<<<<<< Updated upstream
 	    ImageIO.write(cropped, "jpg", new File("//home//marko//workspace//HackLondon//src//rotatedScans//bw" + count + ".jpg"));
+=======
+<<<<<<< Updated upstream
+	    ImageIO.write(cropped, "bmp", new File("//home//marko//workspace//HackLondon//src//bw" + count + ".bmp"));
+=======
+	    ImageIO.write(cropped, "jpg", new File("//Users//nathalievonhuth//Desktop//" + count + ".jpg"));
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 	}
 	
 	public static void makeRotations(BufferedImage img, int n) throws IOException {
@@ -83,7 +91,7 @@ public class BWConverter {
 		}
 	}
 	
-	public static void writeBWImages(BufferedImage in) throws IOException {
+	public static void writeBWImages(BufferedImage in, int pics) throws IOException {
 		BufferedImage bw = new BufferedImage(in.getWidth(), in.getHeight(), BufferedImage.TYPE_BYTE_BINARY);
 
 		int w = in.getWidth();
@@ -172,7 +180,12 @@ public class BWConverter {
 	    }
 	    
 	    // how many rotations we want
+<<<<<<< Updated upstream
 	    makeRotations(centered, 344);
+=======
+<<<<<<< Updated upstream
+	    makeRotations(centered, 360);
+>>>>>>> Stashed changes
 	}
 	
 	public static void main(String[] args) throws IOException {
@@ -180,6 +193,13 @@ public class BWConverter {
 		File img = new File("//home//marko//workspace//HackLondon//src//1.bmp");
 		BufferedImage in = ImageIO.read(img);
 		writeBWImages(in);
+<<<<<<< Updated upstream
 		*/
+=======
+		System.out.println("Time is: " + (System.currentTimeMillis() - time));
+=======
+	    makeRotations(centered, pics);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 	}
 }
